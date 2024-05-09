@@ -14,37 +14,54 @@ public class ColorfulPrintUtil {
 
     // 红色文本
     public static void printRed(String text) {
+        System.out.print(ANSI_COLOR_RED + text + ANSI_RESET);
+    }
+    public static void printlnRed(String text) {
         System.out.println(ANSI_COLOR_RED + text + ANSI_RESET);
     }
-
     // 绿色文本
-    public static void printGreen(String text) {
+    public static void printlnGreen(String text) {
         System.out.println(ANSI_COLOR_GREEN + text + ANSI_RESET);
+    }
+    public static void printGreen(String text) {
+        System.out.print(ANSI_COLOR_GREEN + text + ANSI_RESET);
     }
 
     // 黄色文本
     public static void printYellow(String text) {
+        System.out.print(ANSI_COLOR_YELLOW + text + ANSI_RESET);
+    }
+    public static void printlnYellow(String text) {
         System.out.println(ANSI_COLOR_YELLOW + text + ANSI_RESET);
     }
 
     // 蓝色文本
-    public static void printBlue(String text) {
+    public static void printlnBlue(String text) {
         System.out.println(ANSI_COLOR_BLUE + text + ANSI_RESET);
     }
-
+    public static void printBlue(String text) {
+        System.out.print(ANSI_COLOR_BLUE + text + ANSI_RESET);
+    }
     // 洋红色文本
     public static void printMagenta(String text) {
+        System.out.print(ANSI_COLOR_MAGENTA + text + ANSI_RESET);
+    }
+    public static void printlnMagenta(String text) {
         System.out.println(ANSI_COLOR_MAGENTA + text + ANSI_RESET);
     }
-
     // 青色文本
     public static void printCyan(String text) {
+        System.out.print(ANSI_COLOR_CYAN + text + ANSI_RESET);
+    }
+    public static void printlnCyan(String text) {
         System.out.println(ANSI_COLOR_CYAN + text + ANSI_RESET);
     }
-
     // 白色文本
-    public static void printWhite(String text) {
+    public static void printlnWhite(String text) {
         System.out.println(ANSI_COLOR_WHITE + text + ANSI_RESET);
+    }
+    public static void printWhite(String text) {
+        System.out.print(ANSI_COLOR_WHITE + text + ANSI_RESET);
     }
 
 }
