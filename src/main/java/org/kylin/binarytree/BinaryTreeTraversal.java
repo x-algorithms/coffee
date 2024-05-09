@@ -1,7 +1,5 @@
 package org.kylin.binarytree;
 
-import org.junit.Test;
-
 public class BinaryTreeTraversal {
 
     public static void preOrder(TreeNode root) {

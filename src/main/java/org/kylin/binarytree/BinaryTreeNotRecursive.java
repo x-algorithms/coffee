@@ -2,7 +2,6 @@ package org.kylin.binarytree;
 
 import org.kylin.utils.ColorfulPrintUtil;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class BinaryTreeNotRecursive {
