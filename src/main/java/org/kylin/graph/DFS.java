@@ -3,8 +3,8 @@ package org.kylin.graph;
 import org.junit.Test;
 import org.kylin.utils.ColorfulPrintUtil;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * <img src="./graph-1.png" alt="graph-dfs"/>
@@ -31,7 +31,28 @@ public class DFS {
         v5.edges = Arrays.asList();
         v6.edges = Arrays.asList(new Edge(v5, 9));
 
-        dfs(v1);
+        // dfs(v1);
+        dfsWithNoneRecursion(v1);
+    }
+
+    /**
+     * v1 -> v6 -> v5 -> v2 -> v4 -> v3
+     */
+    public static void dfsWithNoneRecursion(Vertex v) {
+        LinkedList<Vertex> stack = new LinkedList<>();
+        stack.push(v);
+
+        while (!stack.isEmpty()) {
+            Vertex pop = stack.pop();
+            pop.visited = true;
+            ColorfulPrintUtil.printlnCyan(pop.name);
+
+            for (Edge edge : pop.edges) {
+                if (!edge.linked.visited) {
+                    stack.push(edge.linked);
+                }
+            }
+        }
     }
 
     public static void dfs(Vertex v) {
