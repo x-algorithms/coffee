@@ -10,6 +10,8 @@ public class Vertex {
     String name;
     List<Edge> edges;
 
+    boolean visited;
+
     public Vertex(String name) {
         this.name = name;
     }
