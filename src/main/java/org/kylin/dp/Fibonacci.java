@@ -21,9 +21,35 @@ public class Fibonacci {
         return dp[n];
     }
 
+    public static int fib2(int n) {
+        if (n == 0) {
+            return 0;
+        }
+
+        if (n == 1) {
+            return 1;
+        }
+
+        int a = 0;
+        int b = 1;
+        for (int i = 2; i <= n; i++) {
+            int c = b + a;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+
     @Test
     public void TestFib() {
         int res = fib(10);
         assertEquals(55, res);
+    }
+
+    @Test
+    public void TestFib2() {
+        assertEquals(55, fib2(10));
+        assertEquals(89, fib2(11));
+        assertEquals(144, fib2(12));
     }
 }
