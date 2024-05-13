@@ -35,6 +35,31 @@ public class LC62 {
         return dp[m - 1][n - 1];
     }
 
+    /**
+     * 上述用二维数组本质上很大空间是浪费的
+     * 只需要最后一行空间即可满足计算存储需求
+     */
+    public int uniquePaths2(int m, int n) {
+        // 1. dp array. m * n
+        int[] dp = new int[n];
+
+        // 2. init value
+        for (int j = 0; j < n; j++) {
+            dp[j] = 1;
+        }
+
+        // 3. calculate
+        for (int i = 1; i < m; i++) {
+            dp[0] = 1;
+            for (int j = 1; j < n; j++) {
+                dp[j] = dp[j] + dp[j - 1];
+            }
+        }
+
+        return dp[n - 1];
+    }
+
+
     @Test
     public void TestUniquePaths() {
         int ant = new LC62().uniquePaths(3, 7);
@@ -47,5 +72,15 @@ public class LC62 {
         assertEquals(6, cat);
     }
 
+    @Test
+    public void TestUniquePaths2() {
+        int ant = new LC62().uniquePaths2(3, 7);
+        assertEquals(28, ant);
 
+        int bear = new LC62().uniquePaths2(3, 2);
+        assertEquals(3, bear);
+
+        int cat = new LC62().uniquePaths2(3, 3);
+        assertEquals(6, cat);
+    }
 }
