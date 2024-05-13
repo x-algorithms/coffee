@@ -1,7 +1,6 @@
 package org.kylin.dp;
 
 import org.junit.Test;
-import org.kylin.utils.ColorfulPrintUtil;
 import static org.junit.Assert.assertEquals;
 
 public class Fibonacci {
