@@ -1,9 +1,9 @@
 package org.kylin.linkedlist;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.kylin.utils.ColorfulPrintUtil;
-
-import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class LinkedListTest {
 
@@ -35,5 +35,8 @@ public class LinkedListTest {
         linkedList.append(3);
         linkedList.append(4);
         linkedList.traversal();
+
+        Assertions.assertIterableEquals(Arrays.asList(1, 2, 3, 4), linkedList);
     }
+
 }
