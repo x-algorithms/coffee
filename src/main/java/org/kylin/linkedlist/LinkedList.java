@@ -29,5 +29,11 @@ public class LinkedList {
         }
     }
 
+    public void loop() {
+        for (Node p = head; p != null; p = p.next) {
+            ColorfulPrintUtil.printYellow(p.value + "\t");
+        }
+    }
+
 
 }

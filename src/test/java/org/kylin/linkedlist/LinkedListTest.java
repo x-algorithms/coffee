@@ -15,6 +15,10 @@ public class LinkedListTest {
         linkedList.prepend(4);
         linkedList.prepend(5);
         linkedList.traversal();
+
+        System.out.println();
+        linkedList.loop();
     }
+
 
 }
