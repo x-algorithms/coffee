@@ -1,6 +1,7 @@
 package org.kylin.linkedlist;
 
 import org.junit.Test;
+import org.kylin.utils.ColorfulPrintUtil;
 
 import static org.junit.Assert.*;
 
@@ -18,6 +19,11 @@ public class LinkedListTest {
 
         System.out.println();
         linkedList.loop();
+
+        System.out.println();
+        for (Integer value: linkedList) {
+            ColorfulPrintUtil.printGreen(value + "\t");
+        }
     }
 
 

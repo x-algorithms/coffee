@@ -2,8 +2,9 @@ package org.kylin.linkedlist;
 
 import org.kylin.utils.ColorfulPrintUtil;
 
-public class LinkedList {
+import java.util.Iterator;
 
+public class LinkedList implements Iterable<Integer> {
     class Node {
         int value;
         Node next;
@@ -33,6 +34,24 @@ public class LinkedList {
         for (Node p = head; p != null; p = p.next) {
             ColorfulPrintUtil.printYellow(p.value + "\t");
         }
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            Node p = head;
+            @Override
+            public boolean hasNext() {
+                return p != null;
+            }
+
+            @Override
+            public Integer next() {
+                int val = p.value;
+                p = p.next;
+                return val;
+            }
+        };
     }
 
 
