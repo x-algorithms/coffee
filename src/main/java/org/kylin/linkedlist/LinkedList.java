@@ -74,4 +74,22 @@ public class LinkedList implements Iterable<Integer> {
         last.next = new Node(value, null);
     }
 
+    public Node find(int index) {
+        int idx = 0;
+        for (Node p = head; p != null; p = p.next, idx++){
+            if (index == idx) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public int get(int index) {
+        Node node = find(index);
+        if (node == null) {
+            throw new IllegalArgumentException(String.format("index %d illegal", index));
+        }
+        return node.value;
+    }
+
 }

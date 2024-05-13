@@ -39,4 +39,12 @@ public class LinkedListTest {
         Assertions.assertIterableEquals(Arrays.asList(1, 2, 3, 4), linkedList);
     }
 
+    @Test
+    public void get() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        Assertions.assertEquals(3, linkedList.get(2));
+    }
 }
