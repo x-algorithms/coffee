@@ -54,5 +54,24 @@ public class LinkedList implements Iterable<Integer> {
         };
     }
 
+    public Node findLast() {
+        if (head == null) {
+            return null;
+        }
+
+        Node p;
+        for (p = head; p.next != null; p = p.next) {}
+        return p;
+    }
+
+    public void append(int value) {
+        Node last = findLast();
+        if (last == null) {
+            prepend(value);
+            return;
+        }
+
+        last.next = new Node(value, null);
+    }
 
 }
