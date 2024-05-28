@@ -72,7 +72,6 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
 
     /**
      * Find min node
-     * @param key key
      * @return min bst node
      */
     public V min() {
@@ -133,6 +132,41 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
         }
 
         return maxHelper(node.right);
+    }
+
+    /**
+     * Add new bst node to BSTTree.
+     * @param key key
+     * @param value value
+     */
+    public void Put(K key, V value) {
+        BSTNode<K, V> node = root;
+        BSTNode<K, V> parent = null;
+
+        while (node != null) {
+            parent = node;
+            int result = key.compareTo(node.key);
+            if (result > 0) {
+                node = node.right;
+            } else if (result < 0) {
+                node = node.left;
+            } else {
+                node.value = value;
+                return;
+            }
+        }
+
+        // new bst node
+        if (parent == null) {
+            root = new BSTNode<>(key, value);
+            return;
+        }
+
+        if (key.compareTo(parent.key) > 0) {
+            parent.right = new BSTNode<>(key, value);
+        } else if(key.compareTo(parent.key) < 0) {
+            parent.left = new BSTNode<>(key, value);
+        }
     }
 
 
