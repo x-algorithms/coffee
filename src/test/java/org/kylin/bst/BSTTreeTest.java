@@ -41,4 +41,16 @@ class BSTTreeTest {
         assertEquals("林冲", tree.get(6));
         assertEquals(null, tree.get(8));
     }
+
+    @Test
+    void getWithNoneRecursive() {
+        BSTTree tree = create();
+        assertEquals("宋江", tree.getWithNoneRecursive(1));
+        assertEquals("玉麒麟", tree.getWithNoneRecursive(2));
+        assertEquals("入云龙", tree.getWithNoneRecursive(3));
+        assertEquals("呼延灼", tree.getWithNoneRecursive(4));
+        assertEquals("阮小五", tree.getWithNoneRecursive(5));
+        assertEquals("林冲", tree.getWithNoneRecursive(6));
+        assertEquals(null, tree.getWithNoneRecursive(8));
+    }
 }

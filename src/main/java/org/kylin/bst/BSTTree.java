@@ -54,5 +54,29 @@ public class BSTTree {
         }
     }
 
+    public Object getWithNoneRecursive(int key) {
+        BSTNode node = root;
+        while (node != null) {
+            if (key < node.key) {
+                node = node.left;
+            } else if (key > node.key) {
+                node = node.right;
+            } else {
+                return node.value;
+            }
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }
