@@ -1,10 +1,7 @@
 package org.kylin.bst;
 
 import org.junit.jupiter.api.Test;
-import org.kylin.binarytree.BinaryTreeTraversal;
-import org.kylin.binarytree.TreeNode;
 import org.kylin.utils.ColorfulPrintUtil;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BSTTreeNextTest {
