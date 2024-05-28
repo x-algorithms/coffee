@@ -70,6 +70,75 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
         return null;
     }
 
+    /**
+     * Find min node
+     * @param key key
+     * @return min bst node
+     */
+    public V min() {
+        return minHelper(root);
+    }
+
+    public V minHelper(BSTNode<K, V> node) {
+        if (node == null) {
+            return null;
+        }
+
+        if (node.left == null) {
+            return node.value;
+        }
+
+        return minHelper(node.left);
+    }
+
+    /**
+     * Find bst min node with none recursive.
+     * @return Min bst node
+     */
+    public V getMinWithNoneRecursive() {
+        if (root == null) {
+            return null;
+        }
+
+        BSTNode<K, V> node = root;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node.value;
+    }
+
+    public V getMaxWithNodeRecursive() {
+        if (root == null) {
+            return null;
+        }
+
+        BSTNode<K, V> node = root;
+        while(node.right != null) {
+            node = node.right;
+        }
+        return node.value;
+    }
+
+    public V max() {
+        return maxHelper(root);
+    }
+
+    public V maxHelper(BSTNode<K, V> node) {
+        if (node == null) {
+            return null;
+        }
+
+        if (node.right == null) {
+            return node.value;
+        }
+
+        return maxHelper(node.right);
+    }
+
+
+
+
+
 
 
 

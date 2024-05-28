@@ -1,7 +1,6 @@
 package org.kylin.bst;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BSTTreeNextTest {
@@ -14,25 +13,25 @@ class BSTTreeNextTest {
      *          1  3  5   7
      *
      */
-    public BSTTree create() {
-        BSTTree.BSTNode n1 = new BSTTree.BSTNode(1, "宋江");
-        BSTTree.BSTNode n3 = new BSTTree.BSTNode(3, "入云龙");
-        BSTTree.BSTNode n2 = new BSTTree.BSTNode(2, "玉麒麟", n1, n3);
+    public BSTTreeNext create() {
+        BSTTreeNext.BSTNode n1 = new BSTTreeNext.BSTNode(1, "宋江");
+        BSTTreeNext.BSTNode n3 = new BSTTreeNext.BSTNode(3, "入云龙");
+        BSTTreeNext.BSTNode n2 = new BSTTreeNext.BSTNode(2, "玉麒麟", n1, n3);
 
-        BSTTree.BSTNode n5 = new BSTTree.BSTNode(5, "阮小五");
-        BSTTree.BSTNode n7 = new BSTTree.BSTNode(7, "阮小七");
-        BSTTree.BSTNode n6 = new BSTTree.BSTNode(6, "林冲", n5, n7);
+        BSTTreeNext.BSTNode n5 = new BSTTreeNext.BSTNode(5, "阮小五");
+        BSTTreeNext.BSTNode n7 = new BSTTreeNext.BSTNode(7, "阮小七");
+        BSTTreeNext.BSTNode n6 = new BSTTreeNext.BSTNode(6, "林冲", n5, n7);
 
-        BSTTree.BSTNode root = new BSTTree.BSTNode(4, "呼延灼", n2, n6);
+        BSTTreeNext.BSTNode root = new BSTTreeNext.BSTNode(4, "呼延灼", n2, n6);
 
-        BSTTree tree = new BSTTree();
+        BSTTreeNext tree = new BSTTreeNext();
         tree.root = root;
         return tree;
     }
 
     @Test
     void get() {
-        BSTTree tree = create();
+        BSTTreeNext tree = create();
         assertEquals("宋江", tree.get(1));
         assertEquals("玉麒麟", tree.get(2));
         assertEquals("入云龙", tree.get(3));
@@ -44,7 +43,7 @@ class BSTTreeNextTest {
 
     @Test
     void getWithNoneRecursive() {
-        BSTTree tree = create();
+        BSTTreeNext tree = create();
         assertEquals("宋江", tree.getWithNoneRecursive(1));
         assertEquals("玉麒麟", tree.getWithNoneRecursive(2));
         assertEquals("入云龙", tree.getWithNoneRecursive(3));
@@ -53,4 +52,17 @@ class BSTTreeNextTest {
         assertEquals("林冲", tree.getWithNoneRecursive(6));
         assertEquals(null, tree.getWithNoneRecursive(8));
     }
+
+    @Test
+    void TestGetMin() {
+        BSTTreeNext tree = create();
+        assertEquals("宋江", tree.min());
+    }
+
+    @Test
+    void getMax() {
+        BSTTreeNext tree = create();
+        assertEquals("阮小七", tree.max());
+    }
 }
+
