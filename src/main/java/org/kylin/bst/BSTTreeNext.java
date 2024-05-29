@@ -75,7 +75,19 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
      * @return min bst node
      */
     public V min() {
-        return minHelper(root);
+        // return minHelper(root);
+        return min(root);
+    }
+    public V min(BSTNode<K, V> node) {
+        if (node == null) {
+            return null;
+        }
+
+        BSTNode<K, V> p = node;
+        while (p.left != null) {
+            p = p.left;
+        }
+        return p.value;
     }
 
     public V minHelper(BSTNode<K, V> node) {
