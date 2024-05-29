@@ -119,7 +119,20 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
     }
 
     public V max() {
-        return maxHelper(root);
+        // return maxHelper(root);
+        return max(root);
+    }
+
+    public V max(BSTNode node) {
+        if (node == null) {
+            return null;
+        }
+
+        BSTNode<K, V> p = node;
+        while(p.right != null) {
+            p = p.right;
+        }
+        return p.value;
     }
 
     public V maxHelper(BSTNode<K, V> node) {
@@ -166,6 +179,30 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
             parent.right = new BSTNode<>(key, value);
         } else if(key.compareTo(parent.key) < 0) {
             parent.left = new BSTNode<>(key, value);
+        }
+    }
+
+    public V predecessor(K key) {
+        BSTNode<K, V> p = root;
+        while (p != null) {
+            int result = key.compareTo(p.key);
+            if (result > 0) {
+                p = p.right;
+            } else if (result < 0){
+                p = p.left;
+            } else {
+                break;
+            }
+        }
+
+        // find no bst node
+        if (p == null) {
+            return null;
+        }
+
+        // 节点存在左子树，那么左子树最大值就是前任节点
+        if (p.left != null) {
+
         }
     }
 
