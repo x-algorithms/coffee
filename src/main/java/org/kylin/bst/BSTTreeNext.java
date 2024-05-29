@@ -264,6 +264,124 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
         return ancestorFromRight != null ? ancestorFromRight.value : null;
     }
 
+    /**
+     * Delete node from bst
+     * case 1: delete node has no left child,
+     *                   2
+     *                     \
+     *                      3(deleted)
+     *                       \
+     *                        4
+     *                       /
+     *                     5
+     *
+     * case 2: delete node has no right child
+     *                   2
+     *                  /
+     *                 3(deleted)
+     *                /
+     *               4
+     *                \
+     *                 5
+     *
+     * case 3: delete node has left and right child
+     *      3.1        7
+     *               /
+     *              4 (deleted)
+     *             / \
+     *            2   5
+     *           / \   \
+     *          1   3   6
+     *
+     *      3.2
+     *                  4(deleted)
+     *                /   \
+     *               2     8
+     *             / \    / \
+     *            1   3  7   9
+     *                  /
+     *                 5
+     *                  \
+     *                   6
+     *
+     * @param key node's key
+     * @return node's value
+     */
+    public V delete(K key) {
+        BSTNode<K, V> p = root;
+        BSTNode<K, V> parent = null;
+        while (p != null) {
+            int result = key.compareTo(p.key);
+            if (result > 0) {
+                parent = p;
+                p = p.right;
+            } else if(result < 0) {
+                parent = p;
+                p = p.left;
+            } else {
+                break;
+            }
+        }
+
+        // target node doesn't exist
+        if (p == null) {
+            return null;
+        }
+
+        if (p.left == null) {
+            // case 1
+            shift(parent, p, p.right);
+        } else if (p.right == null) {
+            // case 2
+            shift(parent, p, p.left);
+        } else {
+            // case 3:
+            // find bst successor node
+            BSTNode<K, V> s = p.right;
+            BSTNode<K, V> sParent = p;
+            while (s.left != null) {
+                sParent = s;
+                s = s.left;
+            }
+
+            // if successor not the deleted node's neighbor
+            if (sParent != p) {
+                shift(sParent, s, s.right);
+                s.right = p.right;
+            }
+
+            // successor node replace the deleted node
+            shift(parent, p, s);
+            s.left = p.left;
+        }
+
+        return p.value;
+    }
+
+
+    /**
+     * <h1>Don't ask me why use if if and if, why not use if...else if </h1>
+     * <br /><h2>I don't know...</h2>
+     * <br /><strong>Fucking why...</strong>
+     *
+     * @param parent
+     * @param deleted
+     * @param child
+     */
+    public void shift(BSTNode parent, BSTNode deleted, BSTNode child) {
+        if (parent == null) {
+            root = child;
+        }
+
+        if (deleted == parent.left) {
+            parent.left = child;
+        }
+
+        if (deleted == parent.right) {
+            parent.right = child;
+        }
+    }
+
 
 
 
