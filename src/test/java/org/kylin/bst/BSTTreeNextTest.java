@@ -110,10 +110,18 @@ class BSTTreeNextTest {
     @Test
     void TestPredecessor() {
         BSTTreeNext tree = create();
-        assertEquals("呼延灼", tree.predecessor(5));
+        assertEquals("呼延灼", tree.predecessor(1));
         assertEquals("林冲", tree.predecessor(7));
         assertEquals(null, tree.predecessor(1));
         assertEquals("宋江", tree.predecessor(2));
+    }
+
+    @Test
+    void TestSuccessor() {
+        BSTTreeNext tree = create();
+        assertEquals("玉麒麟", tree.successor(1));
+        assertEquals("入云龙", tree.successor(2));
+        assertEquals(null, tree.successor(7));
     }
 }
 

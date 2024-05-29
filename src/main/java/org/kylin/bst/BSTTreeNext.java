@@ -229,6 +229,40 @@ public class BSTTreeNext<K extends Comparable<K>, V> {
         return ancestorFromLeft != null ? ancestorFromLeft.value : null;
     }
 
+    /**
+     * Find bst node's successor
+     * @param key bst node key
+     * @return min bst node
+     */
+    public V successor(K key) {
+        BSTNode<K, V> p = root;
+        BSTNode<K, V> ancestorFromRight = null;
+
+        while (p != null) {
+            int result = key.compareTo(p.key);
+            if (result > 0) {
+                p = p.right;
+            } else if (result < 0){
+                ancestorFromRight = p;
+                p = p.left;
+            } else {
+                break;
+            }
+        }
+
+        // find no bst node
+        if (p == null) {
+            return null;
+        }
+
+        // case 1: 节点存在右子树，那么右子树最小值就是前任节点
+        if (p.right != null) {
+            return min(p.right);
+        }
+
+        // case 2: 节点没有右子树，祖先节点中从右侧过来的、相邻的节点就是前驱节点
+        return ancestorFromRight != null ? ancestorFromRight.value : null;
+    }
 
 
 
