@@ -106,5 +106,14 @@ class BSTTreeNextTest {
         assertEquals("鲁智深", tree.get(1));
         preOrder(tree.root);
     }
+
+    @Test
+    void TestPredecessor() {
+        BSTTreeNext tree = create();
+        assertEquals("呼延灼", tree.predecessor(5));
+        assertEquals("林冲", tree.predecessor(7));
+        assertEquals(null, tree.predecessor(1));
+        assertEquals("宋江", tree.predecessor(2));
+    }
 }
 
