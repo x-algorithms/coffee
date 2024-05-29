@@ -66,7 +66,7 @@ class BSTTreeNextTest {
         assertEquals("阮小七", tree.max());
     }
 
-    static boolean isSameTree(BSTTreeNext.BSTNode p, BSTTreeNext.BSTNode q) {
+    static boolean isSameTree(BSTTreeNext.BSTNode p, BSTTreeNext.BSTNode<Integer, String> q) {
         if (p == null && q == null) {
             return true;
         }
@@ -78,7 +78,7 @@ class BSTTreeNextTest {
         return p.value == q.value && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
-    public static void preOrder(BSTTreeNext.BSTNode root) {
+    public static void preOrder(BSTTreeNext.BSTNode<Integer, String> root) {
         if (root == null) {
             return;
         }
@@ -89,7 +89,7 @@ class BSTTreeNextTest {
 
     @Test
     void TestPut() {
-        BSTTreeNext tree = new BSTTreeNext();
+        BSTTreeNext<Integer, String> tree = new BSTTreeNext<Integer, String>();
         tree.Put(4, "呼延灼");
         tree.Put(2, "玉麒麟");
         tree.Put(6, "林冲");
