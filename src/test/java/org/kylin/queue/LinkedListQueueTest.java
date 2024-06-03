@@ -19,7 +19,16 @@ class LinkedListQueueTest {
     }
 
     @Test
-    void poll() {
+    void TestPoll() {
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
+        queue.offer(11);
+        queue.offer(21);
+        queue.offer(38);
+
+        assertEquals(11, queue.poll());
+        assertEquals(21, queue.poll());
+        assertEquals(38, queue.poll());
+        assertNull(queue.poll());
     }
 
     @Test

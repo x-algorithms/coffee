@@ -38,7 +38,15 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
 
     @Override
     public E poll() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        Node<E> head = dummyHead.next;
+        dummyHead.next = head.next;
+        if (head == tail) {
+            tail = head;
+        }
+        return head.value;
     }
 
     @Override
