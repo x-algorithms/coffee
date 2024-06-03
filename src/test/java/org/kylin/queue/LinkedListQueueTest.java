@@ -3,7 +3,6 @@ package org.kylin.queue;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +15,18 @@ class LinkedListQueueTest {
         queue.offer(2);
         queue.offer(3);
         assertIterableEquals(Arrays.asList(1, 2, 3), queue);
+    }
+
+    @Test
+    void TestOfferCapacity() {
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>(3);
+        queue.offer(11);
+        queue.offer(18);
+        queue.offer(32);
+        assertFalse(queue.offer(88));
+        assertFalse(queue.offer(99));
+
+        assertIterableEquals(Arrays.asList(11, 18, 32), queue);
     }
 
     @Test

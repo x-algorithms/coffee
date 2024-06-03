@@ -1,5 +1,4 @@
 package org.kylin.queue;
-
 import java.util.Iterator;
 
 /**
@@ -23,6 +22,14 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
     Node<E> dummyHead = new Node<>(null, null);
     Node<E> tail = dummyHead;
 
+    private int size;
+    private int capacity = Integer.MAX_VALUE;
+
+    public LinkedListQueue(int capacity) {
+        this.capacity = capacity;
+        tail.next = dummyHead;
+    }
+
     public LinkedListQueue() {
         tail.next = dummyHead;
     }
@@ -30,9 +37,13 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
 
     @Override
     public boolean offer(E value) {
+        if (isFull()) {
+            return false;
+        }
         Node<E> newNode = new Node<>(value, dummyHead);
         tail.next = newNode;
         tail = newNode;
+        size++;
         return true;
     }
 
@@ -46,6 +57,7 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
         if (head == tail) {
             tail = head;
         }
+        size--;
         return head.value;
     }
 
@@ -60,6 +72,11 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
     @Override
     public boolean isEmpty() {
         return dummyHead == tail;
+    }
+
+    @Override
+    public boolean isFull() {
+        return size == capacity;
     }
 
     @Override
