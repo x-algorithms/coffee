@@ -15,7 +15,6 @@ class LinkedListQueueTest {
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
-
         assertIterableEquals(Arrays.asList(1, 2, 3), queue);
     }
 
@@ -25,6 +24,11 @@ class LinkedListQueueTest {
 
     @Test
     void peek() {
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
+        queue.offer(1);
+        assertEquals(1, queue.peek());
+        queue.offer(8);
+        assertEquals(1, queue.peek());
     }
 
     @Test

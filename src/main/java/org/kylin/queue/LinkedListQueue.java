@@ -20,17 +20,17 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
 
     // dummy head
     // 初始化时首尾指向虚拟节点
-    Node<E> head = new Node<>(null, null);
-    Node<E> tail = head;
+    Node<E> dummyHead = new Node<>(null, null);
+    Node<E> tail = dummyHead;
 
     public LinkedListQueue() {
-        tail.next = head;
+        tail.next = dummyHead;
     }
 
 
     @Override
     public boolean offer(E value) {
-        Node<E> newNode = new Node<>(value, head);
+        Node<E> newNode = new Node<>(value, dummyHead);
         tail.next = newNode;
         tail = newNode;
         return true;
@@ -43,24 +43,27 @@ public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
 
     @Override
     public E peek() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        return dummyHead.next.value;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return dummyHead == tail;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Node<E> p = head.next;
+            Node<E> p = dummyHead.next;
 
             // 单向环形链表
             // p.next = head 则首位相邻
             @Override
             public boolean hasNext() {
-                return p != head;
+                return p != dummyHead;
             }
 
             @Override
