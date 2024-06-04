@@ -5,12 +5,8 @@ import org.kylin.binarytree.TreeNode;
 import org.kylin.utils.ColorfulPrintUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 /**
  * <h1>102. 二叉树的层序遍历</h1>
