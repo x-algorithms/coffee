@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * <H1>62. 不同路径</H1>
- * https://leetcode.cn/problems/unique-paths/description/
+ * <a href="https://leetcode.cn/problems/unique-paths/description/">题目</a>
  */
 public class LC62 {
 
