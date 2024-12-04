@@ -119,6 +119,10 @@ public class Array<E> {
         }
     }
 
+    public void set(int index, E e) {
+        data[index] = e;
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
