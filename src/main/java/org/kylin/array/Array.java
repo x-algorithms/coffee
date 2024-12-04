@@ -52,7 +52,8 @@ public class Array<E> {
 
     public void add(int index, E e) {
         if (size == data.length) {
-            throw new IllegalArgumentException(">>> Add failed. The array is full...");
+            // dynamic resize
+            resize();
         }
 
         if (index < 0 || index > size) {
@@ -66,6 +67,14 @@ public class Array<E> {
         }
         data[index] = e;
         size++;
+    }
+
+    private void resize() {
+        E[] newData = (E[])new Object[data.length * 2];
+        for (int idx = 0; idx < size; idx++) {
+            newData[idx] = data[idx];
+        }
+        data = newData;
     }
 
     public void addLast(E e) {
@@ -126,10 +135,10 @@ public class Array<E> {
     }
 
     public static void main(String[] args) {
-        Array<Integer> arr = new Array<>(50);
+        Array<Integer> arr = new Array<>();
         ColorfulPrintUtil.printBlue(arr.toString());
 
-        for (int idx = 0; idx < 20; idx++) {
+        for (int idx = 0; idx < 12; idx++) {
             if (idx % 2 == 0) {
                 arr.addFirst(idx);
             } else {
