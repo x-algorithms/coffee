@@ -138,6 +138,21 @@ public class Array<E> {
         return sb.toString();
     }
 
+    /**
+     * 交换数组中两个元素的位置
+     * @param i 索引 i
+     * @param j 索引 j
+     */
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException(">>> Param out of range...");
+        }
+
+        E tmp = data[i];
+        data[i] = data[j];
+        data[j] = tmp;
+    }
+
     public static void main(String[] args) {
         Array<Integer> arr = new Array<>();
         ColorfulPrintUtil.printBlue(arr.toString());
