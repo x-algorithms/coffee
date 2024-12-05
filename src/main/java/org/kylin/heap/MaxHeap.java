@@ -254,6 +254,12 @@ public class MaxHeap< E extends Comparable<E>> {
         TestCreateBigHeap();
     }
 
+    /**
+     * 这个测试本身比较消耗空间
+     * 1. 先创建一个大顶堆，一个个元素放进去
+     * 2. 一个个元素取出来进行排序，放到一个数组中
+     * 3. 效率太低了...
+     */
     private static void TestCreateBigHeap() {
         int count = 1000000;
         MaxHeap<Integer> bigHeap = new MaxHeap<>();
