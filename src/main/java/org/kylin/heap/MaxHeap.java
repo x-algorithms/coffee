@@ -2,6 +2,8 @@ package org.kylin.heap;
 
 import org.kylin.array.Array;
 
+import java.util.Random;
+
 /**
  * 用数组存储二叉堆
  * <pre>
@@ -122,7 +124,9 @@ import org.kylin.array.Array;
 public class MaxHeap< E extends Comparable<E>> {
     private Array<E> data;
 
-    public MaxHeap() {}
+    public MaxHeap() {
+        data = new Array<>();
+    }
 
     public MaxHeap(int capacity) {
         data = new Array<>(capacity);
@@ -244,6 +248,31 @@ public class MaxHeap< E extends Comparable<E>> {
             data.swap(index, j);
             index = j;
         }
+    }
+
+    public static void main(String[] args) {
+        TestCreateBigHeap();
+    }
+
+    private static void TestCreateBigHeap() {
+        int count = 1000000;
+        MaxHeap<Integer> bigHeap = new MaxHeap<>();
+        Random random = new Random();
+        for (int idx = 0; idx < count; idx++) {
+            bigHeap.add(random.nextInt(Integer.MAX_VALUE));
+        }
+
+        int[] arr = new int[count];
+        for (int idx = 0; idx < count; idx++) {
+            arr[idx] = bigHeap.extractMax();
+        }
+
+        for (int i = 1; i < count; i++) {
+            if (arr[i - 1] < arr[i]) {
+                throw new IllegalArgumentException(">>> Error...");
+            }
+        }
+        System.out.println(">>> Test Heap Success...");
     }
 
 
