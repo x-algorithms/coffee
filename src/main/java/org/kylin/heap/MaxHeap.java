@@ -133,6 +133,19 @@ public class MaxHeap< E extends Comparable<E>> {
     }
 
     /**
+     * Heapify 操作可以理解为构建堆或者调整堆，为什么会这样干呢
+     * 如果从零开始添加元素到堆中算法复杂度是 O(NlogN)
+     * heapify 的过程是 O(N)
+     * 肯定是 heapify 胜出！
+     */
+    public MaxHeap(E[] arr) {
+        data = new Array<>(arr);
+        for (int i = parent(arr.length - 1); i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
+    /**
      * 返回堆中元素个数
      * @return size
      */
@@ -248,6 +261,18 @@ public class MaxHeap< E extends Comparable<E>> {
             data.swap(index, j);
             index = j;
         }
+    }
+
+    /**
+     * 取出堆中最大元素，并且替换成元素 e
+     * @param e 元素
+     * @return 取出的最大元素
+     */
+    public E replace(E e) {
+        E res = getMax();
+        data.set(0, e);
+        siftDown(0);
+        return res;
     }
 
     public static void main(String[] args) {

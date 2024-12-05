@@ -20,6 +20,14 @@ public class Array<E> {
         size = 0;
     }
 
+    public Array(E[] arr) {
+        data = (E[])new Object[arr.length];
+        for (int idx = 0; idx < arr.length; idx++) {
+            data[idx] = arr[idx];
+        }
+        size = arr.length;
+    }
+
     public int getSize() {
         return size;
     }
