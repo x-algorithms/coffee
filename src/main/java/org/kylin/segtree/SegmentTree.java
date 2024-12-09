@@ -139,6 +139,39 @@ public class SegmentTree<E> {
         return merger.merge(leftResult, rightResult);
     }
 
+    /**
+     * 线段树更新
+     * @param index 要更新的索引
+     * @param e 要更新的值
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index > data.length) {
+            throw new IllegalArgumentException(">>> Index is out of bound...");
+        }
+
+        data[index] = e;
+        set(0, 0, data.length - 1, index, e);
+    }
+
+    private void set(int treeIdx, int left, int right, int index, E e) {
+        if (left == right) {
+            tree[treeIdx] = e;
+            return;
+        }
+
+        int mid = left + (right - left) / 2;
+        int leftTreeIdx = leftChild(treeIdx);
+        int rightTreeIdx = rightChild(treeIdx);
+
+        if (index >= mid + 1) {
+            set(rightTreeIdx, mid + 1, right, index, e);
+        } else if (index <= mid) {
+            set(leftTreeIdx, left, mid, index, e);
+        }
+
+        tree[treeIdx] = merger.merge(tree[leftTreeIdx], tree[rightTreeIdx]);
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
