@@ -1,8 +1,6 @@
 package org.kylin.heap;
 
 import org.kylin.array.Array;
-
-import java.util.Arrays;
 import java.util.Random;
 
 /**
