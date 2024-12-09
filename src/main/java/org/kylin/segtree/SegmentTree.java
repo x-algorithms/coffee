@@ -26,6 +26,14 @@ package org.kylin.segtree;
  *           数组         线段树
  *   更新    O(N)        O(logN)
  *   查询    O(N)        O(logN)
+ *
+ *  3. 更高阶的一些操作
+ *   * 连续的一段区间元素更新（懒惰更新）
+ *   * 二维线段树
+ *   * 动态线段树（链式存储）
+ *
+ *  4. 区间操作另外一个非常重要的数据结构: 树状数组 Binary Index Tree
+ *  5. 区间相关的经典问题：RMQ Range Minimum Query
  * </pre>
  *
  */
